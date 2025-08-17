@@ -1,0 +1,27 @@
+#pragma once
+#include "Command.h"
+#include "CopyCommand.h"
+class DeleteCommand : public Command
+{
+private:
+	string& buffer;
+	string deletedText;
+public:
+	DeleteCommand(string& buf) : buffer(buf) {}
+	string text;
+	void execute() override
+	{
+		std::cout << "Введите текст для удаления: ";
+		std::cin >> deletedText;
+		buffer = deletedText;
+		std::cout << "Текст удалён!" << std::endl;
+
+	}
+	void undo() override
+	{
+		
+		buffer = deletedText; 
+		std::cout << "Удаление отменено!" << std::endl;
+	}
+};
+
