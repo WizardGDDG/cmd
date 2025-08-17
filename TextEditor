@@ -1,0 +1,11 @@
+#pragma once
+#include <iostream>
+#include <vector>
+#include "Command.h"
+class TextEditor
+{
+public:
+	vector<Command*> com;
+	
+};
+
