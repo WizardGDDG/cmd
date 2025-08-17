@@ -1,0 +1,31 @@
+#pragma once
+#include "Command.h"
+#include "CopyCommand.h"
+class PasteCommand : public Command
+{
+private:
+	string& buffer;
+public:
+	
+	PasteCommand(string& buf) : buffer(buf) {}
+	void execute() override
+	{
+		if (!buffer.empty())
+		{
+			cout << "Вставлен текст: " << buffer << endl;
+
+		}
+		else
+		{
+			cout << "Буфер пуст " << endl;
+		}
+
+	}
+	void undo() override
+	{
+		buffer.empty();
+	
+		cout << "Действие отменено" << endl;
+	}
+};
+
