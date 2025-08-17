@@ -1,0 +1,26 @@
+#pragma once
+#include "Command.h"
+#include <iostream>
+using namespace std;
+class CopyCommand : public Command
+{
+public:
+	string& buffer;
+	string oldText;
+	CopyCommand(string& buf) : buffer(buf){}
+	
+	void execute() override
+	{
+		
+		cout << "Введите текст" << endl; 
+		cin >> buffer;
+
+		cout << "Текст скопирован" << endl;
+	}
+	void undo() override
+	{
+		oldText = buffer;
+		cout << "Действие отменено" << endl;
+	}
+};
+
